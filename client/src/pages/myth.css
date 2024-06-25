@@ -1,0 +1,42 @@
+.mythCard{
+    background-color: #0079bd;
+    min-width: 400px;
+    min-height: 100vh;
+    border-radius: 10px 10px 0px 0px;
+    padding: 5em 10em 5em 10em;
+    overflow:auto;
+    margin: 70px 0px 0px 0px;
+    filter: brightness(1.3);
+}
+
+.mythCard>li{
+    list-style: none;
+    background-color: white;
+    margin-top: 10px;
+    overflow-x: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+.mythCard>li:hover{
+    transform: scale(1.07);
+    background-color: rgb(253, 212, 161);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+
+
+
+
+@media(max-width:768px){
+    .mythCard{
+        margin: 0px;
+        padding: 5em 1em 5em 1em;
+    }
+
+   
+
+}
+

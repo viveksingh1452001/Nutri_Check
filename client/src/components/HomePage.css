@@ -1,0 +1,110 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content:safe;
+    /* background-color: yellow; */
+    background-image: url("../assets//orange.jpg");
+    filter: brightness(1.1);
+    min-width: 400px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    min-height: 100vh;
+    margin: 70px 50px 0px 50px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0px 50px 0px 50px;
+    overflow: hidden;
+  }
+  @media (max-width: 768px)  {
+    /* Styles here */
+    .content{
+      /* background-image: none;
+        background-color: #5cb6eb; */
+        margin: 0px 0px 0px 0px;
+        border-radius: 0%;
+      /* color: white; */
+    }
+
+    
+    
+  }
+  .content h1 {
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 600;
+    -webkit-text-fill-color: #353433;
+    /* -webkit-text-stroke: 2px rgb(255, 255, 255); */
+    color: transparent;
+    transition: all 0.5s ease;
+    font-family: "Shantell sans", cursive;
+    z-index: 100;
+    margin-top: auto;
+    margin-bottom: 10px;
+    filter: brightness(0.9);
+    /* background-color: green; */
+    
+  }
+ 
+
+  .content h1>span {
+    /* background-color: red; */
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 600;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px #454444;
+    color: transparent;
+    transition: all 0.5s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .content h2{
+    /* background-color: pink; */
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-family:"sans-serif",cursive;
+    font-weight: 400;
+    /* -webkit-text-fill-color: rgb(239, 148, 12); */
+    text-decoration: blue;
+    filter: brightness(1);
+    box-sizing: border-box;
+    z-index: 100;
+    color: rgb(52, 52, 52);
+    /* margin-top: auto; */
+    margin-bottom: 90px;
+  }
+  
+  
+  .btn {
+    background: rgb(30, 29, 29);
+    color: white;
+    font-family: "shantell sans";
+    /* padding: 0.35em; */
+    padding-left: 2em;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 0;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    /* box-shadow: inset 0 0 1.6em -0.6em yellow; */
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 2em;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 50px;
+    z-index: 100;
+    margin-top: 0px;
+    margin-bottom: auto;
+    text-transform: uppercase;
+  }
+  
+  .btn:hover {
+    transform:scale(0.98);
+    color: rgb(0, 0, 0);
+    background-color: #ff5e14;
+  }
+
+
+
+  

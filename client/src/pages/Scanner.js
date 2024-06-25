@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Quagga from "quagga";
-import ScannerBase from "./ScannerBase";
-import Loader from "../components/Loader";
-import './Scanner.css'
+
+ import "./Scanner.css";
+import FileUpload from "../components/FileUpload";
 
 const Scanner = ({ onBarcodeScan }) => {
   const [barcode, setBarcode] = useState(null);
@@ -18,7 +18,6 @@ const Scanner = ({ onBarcodeScan }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-       
         setImageSrc(e.target.result);
         decodeBarcode(e.target.result);
       };
@@ -40,7 +39,7 @@ const Scanner = ({ onBarcodeScan }) => {
         if (result && result.codeResult) {
           console.log("result", result.codeResult.code);
           setBarcode(result.codeResult.code);
-         // onBarcodeScan(result.codeResult.code); // Callback to parent component
+          // onBarcodeScan(result.codeResult.code); // Callback to parent component
         } else {
           console.log("not detected");
           setBarcode("Not detected");
@@ -54,11 +53,13 @@ const Scanner = ({ onBarcodeScan }) => {
     const fetchData = async () => {
       try {
         //setLoading(true);
-        setData(null)
+        setData(null);
         if (!barcode) return; // Return if scannedBarcode is null or undefined
         setLoading(true);
-        const response = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
-        
+        const response = await fetch(
+          `https://world.openfoodfacts.org/api/v3/product/${barcode}.json`
+        );
+
         if (!response.ok) {
           throw new Error("Product not found/ code not scanned");
         }
@@ -77,42 +78,50 @@ const Scanner = ({ onBarcodeScan }) => {
     fetchData();
   }, [barcode]);
 
-  
-
   return (
-    <div>
-            <h1>Barcode Scanner</h1>
-      {loading && <Loader/>}
-      {/* <input type="file" accept="image/*" onChange={handleFileChange} /> */}
-
-      
-
-{!data && (
-  <div class="input-div">
-  <input class="input" name="file" accept="image/*" type="file" onChange={handleFileChange}/>
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
-</div>
-)}
-
-
-
-
-
+    <>
+    <section>
+      <div>
+        
+      </div>
+    </section>
+     <div className="containers">
+        <section className="contain1">
+        <h1 >Barcode</h1>
+        <FileUpload/>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="input1"
+          id="file"
+        />
+        <p
+            onClick={() => {
+              setData(null);
+              setImageSrc(null);
+              setBarcode(null);
+            }}
+            className="btn-del"
+          ><i className="fa-regular fa-trash-can"></i></p>
+      </section>
+      <div className="contain2">
       {imageSrc && (
-        <div>
+        <div className="">
           <h2>Selected Image</h2>
           <img
             src={imageSrc}
             alt="Selected barcode"
-            style={{ width: "50%", height: "auto",position:"relative",  }}
+            style={{ width: "50%", height: "50%", position:"relative",  }}
           />
         </div>
       )}
+      {loading && "Loading..."}
       {barcode && <p>Barcode Number: {barcode}</p>}
       {error && <p>Error: {error}</p>}
-       
-        {data && <ScannerBase handleData={data}/>}
-      {data &&  (
+
+      {/* {data && <ScannerBase handleData={data} />} */}
+      {data && (
         <div>
           <h2>Product Details:</h2>
           <p>Name: {data.product?.product_name}</p>
@@ -120,17 +129,33 @@ const Scanner = ({ onBarcodeScan }) => {
           <p>Categories: {data.product.categories}</p>
           <p>Country: {data.product.countries}</p>
           <p>ecoscore: {data.product.ecoscore_grade}</p>
+          <p>ingredient: {data.product.ingredients_text}</p>
+          <p>total: {data.product.ingredients_n}</p>
+          <p>quantity: {data.product.quantity}</p>
+          <p>packaging: {data.product.packaging}</p>
+          <p>labels: {data.product.labels}</p>
+          <p>serving size: {data.product.serving_size}</p>
+          <p>nova group: {data.product.nova_group}</p>
+          <p>nutri score: {data.product.nutriscore_grade}</p>
+          {/* <p>nova group tag: {data.product.nova_groups_tag}</p> */}
+          <p>website: <a href={data.product.link} target="_blank" rel="noreferrer" style={{color:"white"}}>{data.product.link}</a></p>
+
+          
+          
+          <p>common name: {data.product.generic_name_en}</p>
+          {/* <p>quantity: {data.product?.nutriscore[0].grade}</p> */}
           {/* <p>vegetarian: {data.product.ingredients[0].vegetarian}</p> */}
-          <button onClick={()=>{
-            setData(null)
-            setImageSrc(null);
-            setBarcode(null)
-            }}/>
+          
         </div>
-        
       )}
-      
     </div>
+      </div>
+     
+    </>
+
+
+
+   
   );
 };
 

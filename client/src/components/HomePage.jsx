@@ -1,18 +1,24 @@
-import React from "react";
+//import HomeButton from "./HomeButton";
+import "./HomePage.css";
+//import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+export default function HomePage() {
 
-const HomePage = () => {
+  
+  
   return (
-    <div>
-      <h2>Welcome to the MERN Stack Project!</h2>
-      <p>This is the homepage of your MERN stack project.</p>
-      <p>
-        Choose an option to navigate:
-        
-      </p>
-      <NavLink to='/upload'>UPLOAD</NavLink>
-    </div>
-  );
-};
+    <>
+     
+      <section className="content">
+      
+        <h1>nutri<span>Scan</span></h1>
+        <h2>Discover the future of nutrition with our advanced food packet scanner, <br/>empowering you to effortlessly check and track nutrient information</h2>
+        <NavLink to="/upload" className="btn light">Get started </NavLink>
+        {/* <HomeButton link="/upload" onClick={handleButtonClick}/> */}
+      </section>
+      <section>
 
-export default HomePage;
+      </section>
+    </>
+  );
+}

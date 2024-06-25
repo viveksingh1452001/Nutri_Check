@@ -1,0 +1,11 @@
+.contact1{
+    
+    background-color: #0079bd;
+    min-width: 400px;
+    min-height: 100vh;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20em 10em 10em 9em;
+    overflow:auto;
+    margin: 70px 50px 0px 50px;
+    filter: brightness(1.3);
+}
